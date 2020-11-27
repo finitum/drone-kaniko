@@ -10,7 +10,7 @@ name: default
 
 steps:
 - name: publish
-  image: banzaicloud/drone-kaniko
+  image: ghcr.io/finitum/drone-kaniko:0.7.0
   settings:
     registry: registry.example.com # if not provided index.docker.io is supposed
     repo: registry.example.com/example-project
@@ -34,7 +34,7 @@ name: default
 
 steps:
 - name: publish
-  image: banzaicloud/drone-kaniko
+  image: ghcr.io/finitum/drone-kaniko:0.7.0
   settings:
     registry: gcr.io
     repo: example.com/example-project
@@ -62,7 +62,7 @@ steps:
       - go build
       - make versiontags > .tags
 - name: publish
-  image: banzaicloud/drone-kaniko
+  image: ghcr.io/finitum/drone-kaniko:0.7.0
   settings:
     registry: registry.example.com 
     repo: registry.example.com/example-project
@@ -144,3 +144,7 @@ The very same example just pushing to GCR instead of Docker Hub:
 ```bash
 docker run --net=host -it --rm -w /src -v $PWD:/cache -v $PWD:/src -e PLUGIN_REGISTRY=gcr.io -e PLUGIN_REPO=paas-dev1/drone-kaniko-test -e PLUGIN_TAGS=test -e PLUGIN_DOCKERFILE=Dockerfile.test -e PLUGIN_CACHE=true -e PLUGIN_JSON_KEY="$(<$HOME/google-application-credentials.json)" banzaicloud/drone-kaniko
 ```
+
+---
+
+Forked from [banzaicloud/drone-kaniko](https://github.com/banzaicloud/drone-kaniko)
